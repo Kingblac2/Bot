@@ -11,7 +11,10 @@ from dotenv import load_dotenv
 # Load env variables (if any) prior to importing settings / services
 load_dotenv()
 
-from backend.services.gemini_service import GeminiService
+try:
+    from backend.services.gemini_service import GeminiService
+except ModuleNotFoundError:
+    from services.gemini_service import GeminiService
 
 # Configure logging
 logging.basicConfig(

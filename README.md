@@ -111,6 +111,35 @@ The frontend application will load automatically in your web browser at [http://
 ---
 
 ## Error Handling Scenarios
-- **Invalid API Key**: If you enter an invalid API key, the Streamlit app sidebar will report a Degraded status and the chat output will guide you with an warning stating your key is invalid or inactive.
+- **Invalid API Key**: If you enter an invalid API key, the Streamlit app sidebar will report a Degraded status and the chat output will guide you with a warning stating your key is invalid or inactive.
 - **Connection Failures**: If the backend server stops, the frontend displays an offline warning on the sidebar and notifies you of the failure to connect.
 - **Empty Message Safeguards**: Front and backend code block and validate empty/whitespace prompts.
+
+---
+
+## Deployment Guide (Render + Hugging Face Spaces)
+
+To connect the frontend (Hugging Face) and backend (Render) successfully:
+
+### 1. Backend (FastAPI on Render)
+- Select **Web Service** on Render.
+- Connect your GitHub repo.
+- Configure:
+  - **Root Directory**: `backend`
+  - **Build Command**: `pip install -r requirements.txt`
+  - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- Add Environment Variables in Render:
+  - `GEMINI_API_KEY`: *[Your API Key]*
+  - `GEMINI_MODEL_NAME`: `gemini-3.5-flash`
+  - `PYTHONPATH`: `.`
+- Copy the public Render URL (e.g. `https://your-backend.onrender.com`).
+
+### 2. Frontend (Streamlit on Hugging Face Spaces)
+- Select **Streamlit** SDK.
+- Push the contents of the `frontend/` directory (just `app.py` and `requirements.txt`) directly to the root of your Hugging Face Space repository.
+- Go to Hugging Face Space **Settings** -> **Variables and secrets**.
+- Add a Variable:
+  - **Name**: `BACKEND_URL`
+  - **Value**: `https://your-backend.onrender.com` (Your Render URL)
+
+*Note: Since Streamlit runs server-side on Hugging Face, browser CORS is bypassed automatically for all API calls.*

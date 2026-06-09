@@ -127,6 +127,7 @@ with st.sidebar:
     else:
         st.error("● Backend: Offline")
         st.caption(f"Backend URL: {BACKEND_URL}")
+        st.info("ℹ️ If the backend is deployed on Render's free tier, it spins down after inactivity. It can take 50-70 seconds to wake up on the first request.")
         
     st.divider()
     
