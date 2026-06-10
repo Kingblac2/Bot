@@ -3,8 +3,8 @@ title: Bot
 emoji: 🤖
 colorFrom: blue
 colorTo: green
-sdk: gradio
-sdk_version: "4.44.0"
+sdk: streamlit
+sdk_version: "1.37.0"
 app_file: frontend/app.py
 pinned: false
 ---
