@@ -1,3 +1,16 @@
+---
+title: Bot
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: "4.44.0"
+app_file: frontend/app.py
+pinned: false
+---
+
+
+
 # Full-Stack Gemini AI Chatbot
 
 A production-ready full-stack AI Chatbot application built using **FastAPI** for the backend, **Streamlit** for the frontend, and containerized using **Docker** and **Docker Compose**.
