@@ -21,7 +21,7 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://chandiler:${HF_TOKEN}@huggingface.co/spaces/chandiler/Bot
+          git remote set-url origin https://chandiler:${HF_TOKEN}@huggingface.co/spaces/chandiler/Bot
 
           # Push GitHub repo to the Space
           git push hf HEAD:main --force
