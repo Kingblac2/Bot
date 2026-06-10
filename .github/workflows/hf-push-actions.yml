@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
@@ -23,5 +26,4 @@ jobs:
         run: |
           git remote set-url origin https://chandiler:${HF_TOKEN}@huggingface.co/spaces/chandiler/Bot
 
-          # Push GitHub repo to the Space
           git push origin HEAD:main --force
