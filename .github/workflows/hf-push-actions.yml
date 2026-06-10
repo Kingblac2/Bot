@@ -24,4 +24,4 @@ jobs:
           git remote set-url origin https://chandiler:${HF_TOKEN}@huggingface.co/spaces/chandiler/Bot
 
           # Push GitHub repo to the Space
-          git push hf HEAD:main --force
+          git push origin HEAD:main --force
